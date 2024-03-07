@@ -16,17 +16,25 @@ import {
   FontAwesome,
   Fontisto,
 } from "@expo/vector-icons";
+import { fetchWeatherForecast, fetchLocation } from "../api/weather";
+import { REACT_APP_API_KEY } from "@env";
 
 const HomeScreen = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [locations, setLocations] = useState([1, 2, 3]);
   const handleLocationUpdate = (location) => {};
+  const handleSearch = (searchValue) => {
+    if (searchValue.length > 2) {
+      setTimeout(() => {
+        fetchLocation(searchValue, REACT_APP_API_KEY).then((data) => {
+          console.log(data);
+        });
+      }, 3000);
+    }
+  };
   return (
     <View style={{ flex: 1, padding: 0 }}>
-      <ImageBackground
-        style={{ flex: 1 }}
-        source={require("../images/bgimage.jpg")}
-      >
+      <ImageBackground style={{ flex: 1 }} source={require("../images/bg.jpg")}>
         <View
           style={{
             flexDirection: "row",
@@ -37,6 +45,7 @@ const HomeScreen = () => {
           }}
         >
           <TextInput
+            onChangeText={(text) => handleSearch(text)}
             placeholderTextColor="rgba(255, 255, 255, 0.7)"
             style={styles.searchBar}
             placeholder="Search city"
@@ -59,6 +68,7 @@ const HomeScreen = () => {
                   width: "95%",
                   opacity: 0.4,
                   marginTop: 3.5,
+                  marginLeft: 5,
                   padding: 8,
                   flexDirection: "row",
                   alignItems: "center",
@@ -99,7 +109,7 @@ const HomeScreen = () => {
           <View style={styles.weatherIconandDegreeContainer}>
             <Image
               style={{ width: 150, height: 150 }}
-              source={require("../images/sunny.png")}
+              source={require("../images/sun.png")}
             />
             <Text
               style={{
@@ -141,7 +151,7 @@ const HomeScreen = () => {
               alignItems: "center",
               gap: 15,
               marginTop: 40,
-              marginLeft: 20,
+              marginLeft: 35,
             }}
           >
             <FontAwesome name="calendar" size={24} color="white" />
@@ -151,7 +161,7 @@ const HomeScreen = () => {
           </View>
         </View>
         <ScrollView
-          style={{ position: "absolute", bottom: 50 }}
+          style={{ position: "absolute", bottom: 70 }}
           horizontal
           showsHorizontalScrollIndicator={false}
         >
@@ -207,14 +217,14 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   searchBar: {
-    marginLeft: 10,
+    marginLeft: 12,
     color: "white",
     fontWeight: "bold",
     width: "95%",
     backgroundColor: "gray",
     borderRadius: 20,
     fontSize: 20,
-    padding: 12,
+    padding: 11,
     opacity: 0.3,
   },
   forecastSectionContainer: {
@@ -231,7 +241,7 @@ const styles = StyleSheet.create({
   },
   weatherIconandDegreeContainer: {
     marginTop: 30,
-    marginLeft: 30,
+    marginLeft: 20,
     alignItems: "center",
     gap: 20,
   },
@@ -241,8 +251,9 @@ const styles = StyleSheet.create({
     gap: 60,
   },
   dailyForecastContainer: {
+    width: 100,
     marginLeft: 20,
-    padding: 10,
+    padding: 8,
     borderRadius: 20,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     shadowColor: "#000",
@@ -253,5 +264,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3, // Adjust the shadow opacity
     shadowRadius: 3,
     elevation: 5,
+    alignItems: "center",
   },
 });
