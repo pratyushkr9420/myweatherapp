@@ -1,8 +1,8 @@
 ## Screenshots
 <p float="left">
-  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0982.PNG" width="300" height="600" alt="Screenshot 1">
-  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0983.PNG" width="300" height="600" alt="Screenshot 2">
-  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0984.PNG" width="300" height="600" alt="Screenshot 3">
+  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0982.PNG" width="200" height="600" alt="Screenshot 1">
+  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0983.PNG" width="200" height="600" alt="Screenshot 2">
+  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0984.PNG" width="200" height="600" alt="Screenshot 3">
 </p>
 
 ## Introduction
