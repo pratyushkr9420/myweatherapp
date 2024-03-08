@@ -23,7 +23,15 @@ const HomeScreen = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [locations, setLocations] = useState([]);
   const [currentLocation, setCurrentLocation] = useState({});
-
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   const handleSearch = (searchValue) => {
     if (searchValue.length > 2) {
       setTimeout(() => {
@@ -36,6 +44,7 @@ const HomeScreen = () => {
   };
 
   const handleLocationUpdate = (location) => {
+    setLocations([]);
     fetchWeatherForecast(location.name, 7, REACT_APP_API_KEY).then((data) => {
       setCurrentLocation(data);
       console.log("The current data is", data);
@@ -99,7 +108,7 @@ const HomeScreen = () => {
                     fontSize: 16,
                   }}
                 >
-                  {location.name},{location.country}
+                  {location?.name},{location?.country}
                 </Text>
               </Pressable>
             ))}
@@ -108,12 +117,7 @@ const HomeScreen = () => {
         <View style={styles.forecastSectionContainer}>
           <View style={styles.forecastSectionTextContainer}>
             <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
-              {currentLocation &&
-              currentLocation.location &&
-              currentLocation.location.name
-                ? currentLocation.location.name
-                : "Boston"}
-              ,
+              {currentLocation?.location?.name},
             </Text>
             <Text
               style={{
@@ -123,13 +127,15 @@ const HomeScreen = () => {
                 marginTop: 5,
               }}
             >
-              United States
+              {currentLocation?.location?.country}
             </Text>
           </View>
           <View style={styles.weatherIconandDegreeContainer}>
             <Image
               style={{ width: 150, height: 150 }}
-              source={require("../images/sun.png")}
+              source={{
+                uri: "http:" + currentLocation?.current?.condition?.icon,
+              }}
             />
             <Text
               style={{
@@ -139,20 +145,10 @@ const HomeScreen = () => {
                 fontSize: 50,
               }}
             >
-              {currentLocation &&
-              currentLocation.current &&
-              currentLocation.current.temp_c
-                ? currentLocation.current.temp_c
-                : 22}
-              °C
+              {currentLocation?.current?.temp_c}°C
             </Text>
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
-              {currentLocation &&
-              currentLocation.current &&
-              currentLocation.current.condition &&
-              currentLocation.current.condition.text
-                ? currentLocation.current.condition.text
-                : "Sunny"}
+              {currentLocation?.current?.condition?.text}
             </Text>
             <View style={styles.otherStatsContainer}>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -162,38 +158,19 @@ const HomeScreen = () => {
                   color="white"
                 />
                 <Text style={{ color: "white", fontWeight: "bold" }}>
-                  {currentLocation &&
-                  currentLocation.current &&
-                  currentLocation.current.condition &&
-                  currentLocation.current.condition.wind_kph
-                    ? currentLocation.current.condition.wind_kph
-                    : 18}
-                  km
+                  {currentLocation?.current?.condition?.wind_kph}km
                 </Text>
               </View>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Feather name="droplet" size={24} color="white" />
                 <Text style={{ color: "white", fontWeight: "bold" }}>
-                  {currentLocation &&
-                  currentLocation.current &&
-                  currentLocation.current.condition &&
-                  currentLocation.current.condition.humidity
-                    ? currentLocation.current.condition.humidity
-                    : 20}
-                  %
+                  {currentLocation?.current?.condition?.humidity}%
                 </Text>
               </View>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Feather name="sunrise" size={24} color="white" />
                 <Text style={{ color: "white", fontWeight: "bold" }}>
-                  {currentLocation &&
-                  currentLocation.forecast &&
-                  currentLocation.forecast.forecastday &&
-                  currentLocation.forecast.forecastday[0] &&
-                  currentLocation.forecast.forecastday[0].astro &&
-                  currentLocation.forecast.forecastday[0].astro.sunrise
-                    ? currentLocation.forecast.forecastday[0].astro.sunrise
-                    : "6:10 AM"}
+                  {currentLocation?.forecast?.forecastday[0]?.astro?.sunrise}
                 </Text>
               </View>
             </View>
@@ -218,43 +195,22 @@ const HomeScreen = () => {
           horizontal
           showsHorizontalScrollIndicator={false}
         >
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>Monday</Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>Tuesday</Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>
-              Wednesday
-            </Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>Thursday</Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>Friday</Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>Saturday</Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
-          <View style={styles.dailyForecastContainer}>
-            <Fontisto name="day-lightning" size={24} color="white" />
-            <Text style={{ color: "white", fontWeight: "bold" }}>Sunday</Text>
-            <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
-          </View>
+          {currentLocation?.forecast?.forecastday.map((day, index) => {
+            const currentDayObject = new Date(day.date);
+            const currentDay = daysOfWeek[currentDayObject.getDay()];
+            return (
+              <View key={index} style={styles.dailyForecastContainer}>
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={{ uri: "http:" + day?.day?.condition?.icon }}
+                />
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  {currentDay}
+                </Text>
+                <Text style={{ color: "white", fontWeight: "bold" }}>25°C</Text>
+              </View>
+            );
+          })}
         </ScrollView>
       </ImageBackground>
     </View>
