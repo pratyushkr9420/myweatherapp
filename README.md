@@ -74,7 +74,7 @@ npm run ios
 
 ## Acknowledgements
 
-This project wouldn't have been possible without the support and contributions from various individuals and technologies. We would like to express our gratitude to the following:
+This project wouldn't have been possible without the support and contributions from various individuals and technologies. I would like to express our gratitude to the following:
 
 - **[React Native](https://reactnative.dev/)**: The framework that powers our mobile app, allowing us to create a seamless cross-platform experience.
 
@@ -93,8 +93,6 @@ This project wouldn't have been possible without the support and contributions f
 - **[Babel](https://babeljs.io/)**: The JavaScript compiler that allows us to use the latest ECMAScript features in our code.
 
 - **[react-native-dotenv](https://github.com/goatandsheep/react-native-dotenv)**: Enabling us to manage environment variables in our React Native project.
-
-I appreciate the open-source community and the creators of these tools and libraries for their continuous efforts in making development more accessible and efficient.
 
 ## Contact
 
