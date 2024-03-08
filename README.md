@@ -35,6 +35,16 @@ Welcome to myweatherApp, your go-to weather application for up-to-date informati
 </ul>
 
 ## Usage
+
+Step-by-step instructions on how to install and set up the project
+
+```bash
+# Clone the repository
+git clone https://github.com/pratyushkr9420/myweatherapp
+
+# Navigate to the project directory
+cd myweatherapp
+```
 <p>To run the application locally, follow these steps:</p>
 
 <ol>
