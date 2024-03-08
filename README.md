@@ -34,3 +34,31 @@ Welcome to myweatherApp, your go-to weather application for up-to-date informati
   <li><a href="https://www.npmjs.com/package/react-native-dotenv" target="_blank">react-native-dotenv</a>: ^3.4.11</li>
 </ul>
 
+## Usage
+<p>To run the application locally, follow these steps:</p>
+
+<ol>
+  <li>Install the dependencies using the following command:</li>
+</ol>
+
+```bash
+npm install
+```
+<ol start="2">
+  <li>Start the Expo development server:</li>
+</ol>
+
+```bash
+npm start
+```
+<p>Choose the desired platform:</p>
+For Android:
+
+```bash
+npm run android
+```
+For IOS:
+```bash
+npm run ios
+```
+
