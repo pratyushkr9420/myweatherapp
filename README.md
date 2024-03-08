@@ -19,8 +19,6 @@ Welcome to myweatherApp, your go-to weather application for up-to-date informati
 - **Powered by weather API**: myweatherapp leverages the weather API to ensure accurate and reliable weather data, enhancing the overall performance of the application.
 
 ## Dependencies
-
-```html
 <ul>
   <li><a href="https://reactnavigation.org/" target="_blank">@react-navigation/native</a>: ^6.1.14</li>
   <li><a href="https://reactnavigation.org/" target="_blank">@react-navigation/native-stack</a>: ^6.9.22</li>
