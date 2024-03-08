@@ -1,9 +1,11 @@
 ## Screenshots
-<p float="left">
-  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0982.PNG" width="250" height="600" alt="Screenshot 1">
-  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0983.PNG" width="250" height="600" alt="Screenshot 2">
-  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0984.PNG" width="250" height="600" alt="Screenshot 3">
-</p>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <img src="https://github.com/pratyushkr9420/habit-trackerx/blob/main/screenshots/IMG_0972.PNG" width="300" height="600" alt="Screenshot 1">
+  <img src="https://github.com/pratyushkr9420/habit-trackerx/blob/main/screenshots/IMG_0973.PNG" width="300" height="600" alt="Screenshot 2">
+  <img src="https://github.com/pratyushkr9420/habit-trackerx/blob/main/screenshots/IMG_0974.PNG" width="300" height="600" alt="Screenshot 3">
+  <img src="https://github.com/pratyushkr9420/habit-trackerx/blob/main/screenshots/IMG_0975.PNG" width="300" height="600" alt="Screenshot 4">
+</div>
 
 ## Introduction
 
