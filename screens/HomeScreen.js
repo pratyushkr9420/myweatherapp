@@ -21,16 +21,26 @@ import { REACT_APP_API_KEY } from "@env";
 
 const HomeScreen = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const [locations, setLocations] = useState([1, 2, 3]);
-  const handleLocationUpdate = (location) => {};
+  const [locations, setLocations] = useState([]);
+  const [currentLocation, setCurrentLocation] = useState({});
+
   const handleSearch = (searchValue) => {
     if (searchValue.length > 2) {
       setTimeout(() => {
         fetchLocation(searchValue, REACT_APP_API_KEY).then((data) => {
-          console.log(data);
+          console.log(data[0]);
+          setLocations(data);
         });
       }, 3000);
     }
+  };
+
+  const handleLocationUpdate = (location) => {
+    fetchWeatherForecast(location.name, 7, REACT_APP_API_KEY).then((data) => {
+      setCurrentLocation(data);
+      console.log("The current data is", data);
+    });
+    setShowSearch((currentState) => !currentState);
   };
   return (
     <View style={{ flex: 1, padding: 0 }}>
@@ -58,7 +68,12 @@ const HomeScreen = () => {
           </Pressable>
         </View>
         {showSearch && (
-          <View style={{ marginTop: 110, marginLeft: 10 }}>
+          <View
+            style={{
+              marginTop: 110,
+              marginLeft: 10,
+            }}
+          >
             {locations.map((location, index) => (
               <Pressable
                 key={index}
@@ -66,8 +81,8 @@ const HomeScreen = () => {
                   backgroundColor: "gray",
                   borderRadius: 20,
                   width: "95%",
-                  opacity: 0.4,
-                  marginTop: 3.5,
+                  opacity: 1.0,
+                  marginTop: 2.0,
                   marginLeft: 5,
                   padding: 8,
                   flexDirection: "row",
@@ -84,7 +99,7 @@ const HomeScreen = () => {
                     fontSize: 16,
                   }}
                 >
-                  London, United Kingom
+                  {location.name},{location.country}
                 </Text>
               </Pressable>
             ))}
@@ -93,7 +108,12 @@ const HomeScreen = () => {
         <View style={styles.forecastSectionContainer}>
           <View style={styles.forecastSectionTextContainer}>
             <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
-              London,
+              {currentLocation &&
+              currentLocation.location &&
+              currentLocation.location.name
+                ? currentLocation.location.name
+                : "Boston"}
+              ,
             </Text>
             <Text
               style={{
@@ -103,7 +123,7 @@ const HomeScreen = () => {
                 marginTop: 5,
               }}
             >
-              United Kingdom
+              United States
             </Text>
           </View>
           <View style={styles.weatherIconandDegreeContainer}>
@@ -119,28 +139,61 @@ const HomeScreen = () => {
                 fontSize: 50,
               }}
             >
-              25°C
+              {currentLocation &&
+              currentLocation.current &&
+              currentLocation.current.temp_c
+                ? currentLocation.current.temp_c
+                : 22}
+              °C
             </Text>
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}>
-              Sunny
+              {currentLocation &&
+              currentLocation.current &&
+              currentLocation.current.condition &&
+              currentLocation.current.condition.text
+                ? currentLocation.current.condition.text
+                : "Sunny"}
             </Text>
             <View style={styles.otherStatsContainer}>
-              <View style={{ flexDirection: "row" }}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <MaterialCommunityIcons
                   name="weather-windy"
                   size={24}
                   color="white"
                 />
-                <Text style={{ color: "white", fontWeight: "bold" }}>22km</Text>
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  {currentLocation &&
+                  currentLocation.current &&
+                  currentLocation.current.condition &&
+                  currentLocation.current.condition.wind_kph
+                    ? currentLocation.current.condition.wind_kph
+                    : 18}
+                  km
+                </Text>
               </View>
-              <View style={{ flexDirection: "row" }}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Feather name="droplet" size={24} color="white" />
-                <Text style={{ color: "white", fontWeight: "bold" }}>20%</Text>
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  {currentLocation &&
+                  currentLocation.current &&
+                  currentLocation.current.condition &&
+                  currentLocation.current.condition.humidity
+                    ? currentLocation.current.condition.humidity
+                    : 20}
+                  %
+                </Text>
               </View>
-              <View style={{ flexDirection: "row" }}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Feather name="sunrise" size={24} color="white" />
                 <Text style={{ color: "white", fontWeight: "bold" }}>
-                  6:10 AM
+                  {currentLocation &&
+                  currentLocation.forecast &&
+                  currentLocation.forecast.forecastday &&
+                  currentLocation.forecast.forecastday[0] &&
+                  currentLocation.forecast.forecastday[0].astro &&
+                  currentLocation.forecast.forecastday[0].astro.sunrise
+                    ? currentLocation.forecast.forecastday[0].astro.sunrise
+                    : "6:10 AM"}
                 </Text>
               </View>
             </View>
@@ -228,7 +281,7 @@ const styles = StyleSheet.create({
     opacity: 0.3,
   },
   forecastSectionContainer: {
-    top: 260,
+    top: 240,
     right: 10,
     position: "absolute",
     width: "100%",
@@ -252,7 +305,8 @@ const styles = StyleSheet.create({
   },
   dailyForecastContainer: {
     width: 100,
-    marginLeft: 20,
+    height: 100,
+    marginLeft: 30,
     padding: 8,
     borderRadius: 20,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
@@ -265,5 +319,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 5,
     alignItems: "center",
+    justifyContent: "center",
   },
 });
