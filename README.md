@@ -72,3 +72,34 @@ For IOS:
 npm run ios
 ```
 
+## Acknowledgements
+
+This project wouldn't have been possible without the support and contributions from various individuals and technologies. We would like to express our gratitude to the following:
+
+- **[React Native](https://reactnative.dev/)**: The framework that powers our mobile app, allowing us to create a seamless cross-platform experience.
+
+- **[Expo](https://expo.dev/)**: A powerful toolchain and library for developing and deploying React Native applications with ease.
+
+- **[React Navigation](https://reactnavigation.org/)**: The go-to navigation library for React Native, helping us create a smooth and intuitive user experience.
+
+- **[weatherapi.com](https://www.weatherapi.com/)**: Providing accurate and reliable weather data that forms the backbone of our application.
+
+- **[axios](https://axios-http.com/)**: A promise-based HTTP client for the browser and Node.js, enabling us to make efficient network requests.
+
+- **[AsyncStorage](https://react-native-async-storage.github.io/async-storage/)**: A key-value storage system for React Native, helping us manage and store persistent data.
+
+- **[FontAwesome](https://fontawesome.com/)**, **[Feather](https://feathericons.com/)**, **[Entypo](https://entypo.com/)**, **[MaterialCommunityIcons](https://materialdesignicons.com/)**, **[Fontisto](https://fontisto.com/)**: Icon libraries that enhance the visual appeal of our app.
+
+- **[Babel](https://babeljs.io/)**: The JavaScript compiler that allows us to use the latest ECMAScript features in our code.
+
+- **[react-native-dotenv](https://github.com/goatandsheep/react-native-dotenv)**: Enabling us to manage environment variables in our React Native project.
+
+I appreciate the open-source community and the creators of these tools and libraries for their continuous efforts in making development more accessible and efficient.
+
+## Contact
+
+Get in touch with me:
+
+- Email: kumarpratyush6294@gmail.com
+
+
