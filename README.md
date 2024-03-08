@@ -54,7 +54,19 @@ cd myweatherapp
 ```bash
 npm install
 ```
+
 <ol start="2">
+  <li>Access the API key and it usgae</li>
+</ol>
+
+```bash
+   # Create a .env file in the root directory of your project
+   touch .env
+   # Add the API key to the .env file store it as REACT_APP_API_KEY:
+````
+
+```
+<ol start="3">
   <li>Start the Expo development server:</li>
 </ol>
 
