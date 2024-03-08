@@ -19,6 +19,7 @@ import {
   Fontisto,
 } from "@expo/vector-icons";
 import { fetchWeatherForecast, fetchLocation } from "../api/weather";
+import { storeData, getData } from "../utils/asyncStorage";
 import { REACT_APP_API_KEY } from "@env";
 
 const HomeScreen = () => {
@@ -45,21 +46,24 @@ const HomeScreen = () => {
     }
   };
 
-  const handleLocationUpdate = (location) => {
+  const handleLocationUpdate = async (location) => {
     setLocations([]);
     setLoading(true);
     fetchWeatherForecast(location.name, 7, REACT_APP_API_KEY).then((data) => {
       setCurrentLocation(data);
+      storeData("city", data.location.name);
       setLoading(false);
-      console.log("The current data is", data);
+      //console.log("The current data is", data);
     });
     setShowSearch((currentState) => !currentState);
   };
-  const initalDataFetch = () => {
-    fetchWeatherForecast("Boston", 7, REACT_APP_API_KEY).then((data) => {
-      console.log(data.forecast.forecastday);
-      //currentLocation?.forecast?.forecastday
-      // currentLocation?.current?.condition?.wind_kph
+  const initalDataFetch = async () => {
+    let initialCityName = "Boston";
+    let storedCity = await getData("city");
+    if (storedCity) {
+      initialCityName = storedCity;
+    }
+    fetchWeatherForecast(initialCityName, 7, REACT_APP_API_KEY).then((data) => {
       setCurrentLocation(data);
     });
     setLoading(false);
