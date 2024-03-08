@@ -1,3 +1,10 @@
+## Screenshots
+<p float="left">
+  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0982.PNG" width="300" height="600" alt="Screenshot 1">
+  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0983.PNG" width="300" height="600" alt="Screenshot 2">
+  <img src="https://github.com/pratyushkr9420/myweatherapp/blob/main/screenshots/IMG_0984.PNG" width="300" height="600" alt="Screenshot 3">
+</p>
+
 ## Introduction
 
 Welcome to myweatherApp, your go-to weather application for up-to-date information about any city's current weather conditions and forecasts. Powered by React Native and Expo, this mobile app delivers a seamless and user-friendly experience, allowing you to stay informed about the weather in your favorite cities or plan for your travels.
