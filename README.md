@@ -17,3 +17,22 @@ Welcome to myweatherApp, your go-to weather application for up-to-date informati
 - **7-Day Forecast**: Stay ahead of the weather with a detailed 7-day forecast, providing temperature and weather condition predictions to help you plan your activities.
 - **User-Friendly Interface**: Enjoy a sleek and intuitive user interface that makes navigating through weather information a breeze.
 - **Powered by weather API**: myweatherapp leverages the weather API to ensure accurate and reliable weather data, enhancing the overall performance of the application.
+
+## Dependencies
+
+```html
+<ul>
+  <li><a href="https://reactnavigation.org/" target="_blank">@react-navigation/native</a>: ^6.1.14</li>
+  <li><a href="https://reactnavigation.org/" target="_blank">@react-navigation/native-stack</a>: ^6.9.22</li>
+  <li><a href="https://github.com/axios/axios" target="_blank">axios</a>: ^1.6.7</li>
+  <li><a href="https://docs.expo.dev/" target="_blank">expo</a>: ~50.0.11</li>
+  <li><a href="https://docs.expo.dev/versions/latest/sdk/status-bar/" target="_blank">expo-status-bar</a>: ~1.11.1</li>
+  <li><a href="https://reactjs.org/" target="_blank">react</a>: 18.2.0</li>
+  <li><a href="https://reactnative.dev/" target="_blank">react-native</a>: 0.73.4</li>
+  <li><a href="https://github.com/th3rdwave/react-native-safe-area-context" target="_blank">react-native-safe-area-context</a>: 4.8.2</li>
+  <li><a href="https://github.com/software-mansion/react-native-screens" target="_blank">react-native-screens</a>: ~3.29.0</li>
+  <li><a href="https://react-native-async-storage.github.io/async-storage/docs/install/" target="_blank">@react-native-async-storage/async-storage</a>: 1.21.0</li>
+  <li><a href="https://babeljs.io/" target="_blank">@babel/core</a>: ^7.20.0</li>
+  <li><a href="https://www.npmjs.com/package/react-native-dotenv" target="_blank">react-native-dotenv</a>: ^3.4.11</li>
+</ul>
+
